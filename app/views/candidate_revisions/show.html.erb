@@ -1,0 +1,28 @@
+<p>
+  <b>Revision:</b>
+  <%=h @candidate_revision.revision_id %>
+</p>
+
+<p>
+  <b>Candidate:</b>
+  <%=h @candidate_revision.candidate_id %>
+</p>
+
+<p>
+  <b>Postal votes:</b>
+  <%=h @candidate_revision.postal_votes %>
+</p>
+
+<p>
+  <b>Evm votes:</b>
+  <%=h @candidate_revision.evm_votes %>
+</p>
+
+<p>
+  <b>Total votes:</b>
+  <%=h @candidate_revision.total_votes %>
+</p>
+
+
+<%= link_to 'Edit', edit_candidate_revision_path(@candidate_revision) %> |
+<%= link_to 'Back', candidate_revisions_path %>

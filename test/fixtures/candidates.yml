@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  sex: MyString
+  address_line_1: MyString
+  address_line_2: MyString
+  city_town_village: MyString
+  age: 1
+  category: MyString
+  constituency_id: 1
+  party_id: 1
+
+two:
+  name: MyString
+  sex: MyString
+  address_line_1: MyString
+  address_line_2: MyString
+  city_town_village: MyString
+  age: 1
+  category: MyString
+  constituency_id: 1
+  party_id: 1

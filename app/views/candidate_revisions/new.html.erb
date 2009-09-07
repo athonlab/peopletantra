@@ -1,0 +1,31 @@
+<h1>New candidate_revision</h1>
+
+<% form_for(@candidate_revision) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :revision_id %><br />
+    <%= f.text_field :revision_id %>
+  </p>
+  <p>
+    <%= f.label :candidate_id %><br />
+    <%= f.text_field :candidate_id %>
+  </p>
+  <p>
+    <%= f.label :postal_votes %><br />
+    <%= f.text_field :postal_votes %>
+  </p>
+  <p>
+    <%= f.label :evm_votes %><br />
+    <%= f.text_field :evm_votes %>
+  </p>
+  <p>
+    <%= f.label :total_votes %><br />
+    <%= f.text_field :total_votes %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', candidate_revisions_path %>

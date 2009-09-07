@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  revision_id: 1
+  candidate_id: 1
+  postal_votes: 1
+  evm_votes: 1
+  total_votes: 1
+
+two:
+  revision_id: 1
+  candidate_id: 1
+  postal_votes: 1
+  evm_votes: 1
+  total_votes: 1

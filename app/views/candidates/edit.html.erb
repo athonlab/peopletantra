@@ -1,0 +1,48 @@
+<h1>Editing candidate</h1>
+
+<% form_for(@candidate) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :sex %><br />
+    <%= f.text_field :sex %>
+  </p>
+  <p>
+    <%= f.label :address_line_1 %><br />
+    <%= f.text_field :address_line_1 %>
+  </p>
+  <p>
+    <%= f.label :address_line_2 %><br />
+    <%= f.text_field :address_line_2 %>
+  </p>
+  <p>
+    <%= f.label :city_town_village %><br />
+    <%= f.text_field :city_town_village %>
+  </p>
+  <p>
+    <%= f.label :age %><br />
+    <%= f.text_field :age %>
+  </p>
+  <p>
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </p>
+  <p>
+    <%= f.label :constituency_id %><br />
+    <%= f.text_field :constituency_id %>
+  </p>
+  <p>
+    <%= f.label :party_id %><br />
+    <%= f.text_field :party_id %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @candidate %> |
+<%= link_to 'Back', candidates_path %>

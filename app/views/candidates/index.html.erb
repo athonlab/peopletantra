@@ -1,0 +1,36 @@
+<h1>Listing candidates</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Sex</th>
+    <th>Address line 1</th>
+    <th>Address line 2</th>
+    <th>City town village</th>
+    <th>Age</th>
+    <th>Category</th>
+    <th>Constituency</th>
+    <th>Party</th>
+  </tr>
+
+<% for candidate in @candidates %>
+  <tr>
+    <td><%=h candidate.name %></td>
+    <td><%=h candidate.sex %></td>
+    <td><%=h candidate.address_line_1 %></td>
+    <td><%=h candidate.address_line_2 %></td>
+    <td><%=h candidate.city_town_village %></td>
+    <td><%=h candidate.age %></td>
+    <td><%=h candidate.category %></td>
+    <td><%=h candidate.constituency_id %></td>
+    <td><%=h candidate.party_id %></td>
+    <td><%= link_to 'Show', candidate %></td>
+    <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
+    <td><%= link_to 'Destroy', candidate, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New candidate', new_candidate_path %>

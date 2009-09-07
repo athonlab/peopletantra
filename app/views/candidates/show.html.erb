@@ -1,0 +1,48 @@
+<p>
+  <b>Name:</b>
+  <%=h @candidate.name %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%=h @candidate.sex %>
+</p>
+
+<p>
+  <b>Address line 1:</b>
+  <%=h @candidate.address_line_1 %>
+</p>
+
+<p>
+  <b>Address line 2:</b>
+  <%=h @candidate.address_line_2 %>
+</p>
+
+<p>
+  <b>City town village:</b>
+  <%=h @candidate.city_town_village %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%=h @candidate.age %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @candidate.category %>
+</p>
+
+<p>
+  <b>Constituency:</b>
+  <%=h @candidate.constituency_id %>
+</p>
+
+<p>
+  <b>Party:</b>
+  <%=h @candidate.party_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
+<%= link_to 'Back', candidates_path %>

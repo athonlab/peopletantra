@@ -1,0 +1,28 @@
+<h1>Listing candidate_revisions</h1>
+
+<table>
+  <tr>
+    <th>Revision</th>
+    <th>Candidate</th>
+    <th>Postal votes</th>
+    <th>Evm votes</th>
+    <th>Total votes</th>
+  </tr>
+
+<% for candidate_revision in @candidate_revisions %>
+  <tr>
+    <td><%=h candidate_revision.revision_id %></td>
+    <td><%=h candidate_revision.candidate_id %></td>
+    <td><%=h candidate_revision.postal_votes %></td>
+    <td><%=h candidate_revision.evm_votes %></td>
+    <td><%=h candidate_revision.total_votes %></td>
+    <td><%= link_to 'Show', candidate_revision %></td>
+    <td><%= link_to 'Edit', edit_candidate_revision_path(candidate_revision) %></td>
+    <td><%= link_to 'Destroy', candidate_revision, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New candidate_revision', new_candidate_revision_path %>

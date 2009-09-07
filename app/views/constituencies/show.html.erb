@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @constituency.name %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%=h @constituency.code %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @constituency.state_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_constituency_path(@constituency) %> |
+<%= link_to 'Back', constituencies_path %>
