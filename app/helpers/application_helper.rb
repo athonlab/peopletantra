@@ -16,5 +16,28 @@ module ApplicationHelper
     end
     messages
   end
-  
+
+def is_current? tab
+	case tab
+	when 'home'
+		request.path.eql?('/')
+	when 'working'
+		request.path.eql?('/pages/how_it_works')
+	when 'faqs'
+		request.path.eql?('/pages/faqs')
+	when 'impact'
+		request.path.eql?('/impact') or request.path.eql?('/preferences')
+	when 'community'
+		request.path.eql?('/community') or /^\/users\/\d+/.match(request.path)
+	end
+  end
+
+  def mark_if_current tab
+	'class="current"' if is_current? tab
+  end
+
+  def context_box_color
+	['/', '/pages/faqs', '/pages/how_it_works'].include?(request.path) ? 'yellow' : 'green'
+  end
+
 end

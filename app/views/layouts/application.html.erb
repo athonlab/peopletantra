@@ -1,33 +1,272 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-	<head>
-		<title><%= @page_title || APP_CONFIG[:site_name] %></title>
-		<meta http-equiv="content-type" content="text/xhtml; charset=utf-8" />
-		<meta http-equiv="imagetoolbar" content="no" />
-		<meta name="distribution" content="all" />
-		<meta name="robots" content="all" />	
-		<meta name="resource-type" content="document" />
-		<meta name="MSSmartTagsPreventParsing" content="true" />
-		<%= stylesheet_link_tag 'base' %>
-		<%= javascript_include_tag :defaults %>
-	</head>
-	<body>
-		<div id="container">
-			<div id="header">
-				<ul>
-					<% if logged_in? %>
-					<li><%= link_to 'Logout', logout_path %></li>
-					<% else %>
-					<li><%= link_to 'Login', login_path %></li>
-					<li><%= link_to 'Signup', signup_path %></li>
-					<% end %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>PeopleTantra</title>
+
+  <!-- Framework CSS -->
+	<link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print">
+  <!--[if IE]><link rel="stylesheet" href="../../blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	
+	<!-- Import fancy-type plugin for the sample page. -->
+	<link rel="stylesheet" href="/stylesheets/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	
+	
+	<style>
+	  body {
+	    background-color:#FFF;
+	  }
+	  
+	  body, h1, h2, h3, h4, h5, h6, p, small {
+	    color: #333333;
+    }
+    
+    p, ul.text li, ol.text li {
+      font-size: 1.2em;
+    }
+	  
+  	h4.sections {
+      background-color: #F1F1F1;
+      padding: 0.6em;
+    }
+    
+    p.success {
+      padding: 0.6em;
+    }
+    
+    /* Menu Drop Down */
+    div.menu ul {
+      list-style-image: none;
+      list-style-position: none;
+      list-style-type: none;
+      margin: 0;
+    }
+    
+    div.menu ul li {
+      float: left;
+      margin: 0 0.6em;
+      position: relative;
+      z-index: 1000; 
+      background: #F1F1F1;
+      border-bottom: 0px;
+    }
+
+    div.menu ul li:hover {
+      background: #FFFFFF;
+    }
+
+    div.green ul li:hover {
+      background: #79CF3A;
+    }
+
+    div.yellow ul li:hover {
+      background: #F7AC0A;
+    }
+    
+    div.menu ul li a {
+      display: block;
+      float: left;
+      padding: 0.5em 0.6em 0.6em 0.6em;
+      font-size: 1.2em;
+      line-height: 1.25em;
+      text-decoration: none;
+      color: #333;
+    }
+
+    div.green ul li.current {
+      background: #79CF3A ; 
+    }
+    
+    div.yellow ul li.current {
+      background: #F7AC0A ; 
+    }
+
+    /* Sub menu */
+    div.menu ul li ul {
+      display: none; 
+    }
+
+    div.menu ul li:hover ul {
+      display: block;
+      position: absolute;
+      top: 1.8em;
+      z-index: 1000;
+      left: 0px; 
+    }
+
+    div.menu ul li:hover ul li {
+      margin: 0; 
+    }
+
+    div.menu ul li:hover ul li a {
+      padding: 0.3em 0.5em;
+      background: #fff;
+      border: 1px solid #e4f5fa;
+      border-top: 0px;
+      width: 10em; 
+      font-size: 1.2em;
+      line-height: 1.25em;
+    }
+    /* Sub menu */
+    
+    /* Text link in the menu */
+    div.menu ul li.text-link {
+      float: left;
+      margin: 0 0.2em;
+      position: relative;
+      z-index: 1000; 
+      background: none;
+      border-bottom: 0px;
+    }
+    -
+    div.menu ul li.text-link:hover {
+      background: none;
+      text-decoration: underline;
+    }
+
+    div.menu ul li.text-link a {
+      padding: 0.5em 0.3em 0.6em 0.3em;
+      font-size: 1em;
+      line-height: 1.25em;
+      color:#333333;
+    }
+
+    div.menu ul li.text-link a.border-right {
+      border-right: 3px solid #F1F1F1;
+    }
+
+    div.menu ul li.text-link a {
+      padding: 0em 0.3em;
+      margin: 0.7em 0em;
+      font-size: 0.95em;
+      line-height: 1.25em;
+      color:#333333;
+    }
+    /* End text links */
+    /* End Menu Drop Down */
+    
+    .green {
+      color:#79CF3A;
+    }
+    
+    .yellow {
+      color:#F7AC0A;
+    }
+    
+    .grey, .tag {
+      color: #939393;
+    }
+
+    .tag {
+      margin-top: -18px;
+    }
+    
+    .content-box-green, .content-box-yellow {
+      border-left: 5px solid #F1F1F1;
+      border-right: 5px solid #F1F1F1;
+    }
+
+    .content-box-green {
+      border-top: 3px solid #79CF3A;
+      border-bottom: 3px solid #79CF3A;
+    }
+    
+    .content-box-yellow {
+      border-top: 5px solid #F7AC0A;
+      border-bottom: 4px solid #F7AC0A;
+    }
+    
+    div.colborder {
+      border: 0px;
+    }
+    
+    .errorExplanation {
+      border:2px solid #DDDDDD;
+      margin-bottom:1em;
+      padding:0.8em;
+      background:#FBE3E4 none repeat scroll 0%;
+      border-color:#FBC2C4;
+      color:#8A1F11;
+    }
+    
+    .errorExplanation h2, .errorExplanation p, .errorExplanation ul li {
+      color:#8A1F11;
+    }
+    
+    .errorExplanation h2 {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    
+</style>
+
+	<%= stylesheet_link_tag 'base' %>
+	<%= javascript_include_tag :defaults %>
+	<script type="text/javascript" src="/javascripts/ZeroClipboard.js"></script>
+	
+</head>
+	<body >
+	<div class="container">
+	  <hr class="space" />
+	  
+		<h1><%= image_tag 'logo.jpg' %><span class="yellow">People</span><span class="green">Tantra</span> </h1>
+
+		
+		<hr class="space" />
+    
+    
+		<div class="span-24 last">
+
+		  
+			<div class="span-16 menu yellow">
+				<ul style="float:left">
+					<li <%= mark_if_current('home') %> class="first"><%= link_to 'Home', :controller => 'pages', :action => 'home'%></li>
+					<li <%= mark_if_current('faqs') %>><%= link_to 'FAQs', :controller => 'pages', :action => 'faqs'%></li>
 				</ul>
 			</div>
-			<div id="content">
-				<%= flash_messages %>
-				<%= yield :layout %>
+
+			<div class="span-8 menu green last">
+				<ul style="float:right">
+<% if false %>
+					<li <%= mark_if_current('impact') %>>  <%= link_to 'My Impact', (logged_in? ? impact_path : login_signup_path) %></li>
+					<li <%= mark_if_current('community') %>><%= link_to 'Community', community_path %></li>
+<% end %>
+					<% unless logged_in? %>
+					<li class="text-link"><%= link_to '{ signup', signup_path, :class => 'border-right' %></li>
+
+					<li class="text-link"><%= link_to 'login }', login_path %></li>
+				    <% else%>
+						<li class="text-link"><%= link_to '{ logout }', logout_path %></li>
+					<% end %>	
+				</ul>
 			</div>
+
+			<div class="span-22 append-1 prepend-1 content-box-<%= context_box_color%>">
+				<hr class="space" />
+				<% unless flash_messages.blank? %>
+					<div class="span-22 last">
+						<%= flash_messages %>
+					</div>
+				<% end %>	
+				<hr class="space">
+				<!-- View output -->
+				<%= yield :layout %>
+				
+				
+				<hr class="space"/>
+				<hr class="space"/>
+			</div>
+  		
+		
+			<hr class="space"/>
+		  
 		</div>
+		
+	</div>
+
 	</body>
 </html>
+
