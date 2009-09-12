@@ -1,6 +1,6 @@
 require 'csv'
+ENV["RAILS_ENV"] = "development"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
-
 all_candidates_file = 'csvs/all_candidates_info.csv'
 
 @header = []
@@ -51,12 +51,14 @@ def update_candidate row_hash, constituency, party
   return candidate
 end
 
-def associate_candidate_with_revision row_hash, candidate, revision
-  candidate_revision = CandidateRevision.create :candidate => candidate, :revision => revision, :evm_votes => row_hash['EVM Votes'], :postal_votes => row_hash['PostalVotes'], :total_votes => row_hash['TotalVotes']
+def associate_candidate_with_election row_hash, candidate, election
+  candidate_revision = ElectionCandidate.create :candidate => candidate, :election => election, :evm_votes => row_hash['EVM Votes'], :postal_votes => row_hash['PostalVotes'], :total_votes => row_hash['TotalVotes']
   return candidate_revision
 end
-Revision.create :number => '15'
-@revision = Revision.default
+Revision.create :number => '15', :house => 'loksabha'
+Revision.create :number => '15', :house => 'rajyasabha'
+Election.create :name => '2009'
+@election = Election.default
 
 CSV::Reader.parse(File.open(all_candidates_file, 'rb')) do |row|
   if @header.empty?
@@ -67,7 +69,7 @@ CSV::Reader.parse(File.open(all_candidates_file, 'rb')) do |row|
     constituency = update_constituency(row_hash, state)
     party = update_party(row_hash) 
     candidate = update_candidate(row_hash, constituency, party)
-    candidate_revision = associate_candidate_with_revision(row_hash, candidate, @revision)
+    candidate_revision = associate_candidate_with_election(row_hash, candidate, @election)
   end
 end
 

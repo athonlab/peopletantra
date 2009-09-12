@@ -224,16 +224,21 @@
 			<div class="span-16 menu yellow">
 				<ul style="float:left">
 					<li <%= mark_if_current('home') %> class="first"><%= link_to 'Home', :controller => 'pages', :action => 'home'%></li>
-					<li <%= mark_if_current('faqs') %>><%= link_to 'FAQs', :controller => 'pages', :action => 'faqs'%></li>
+					<li <%= mark_if_current('parliament') %>><%= link_to '15th Parliament', :controller => 'candidates', :action => 'house', :number => '15', :house => 'loksabha' %></li>
+					<li <%= mark_if_current('elections') %>><%= link_to '2009 Loksabha Elections', :controller => 'pages', :action => 'faqs'%></li>
 				</ul>
 			</div>
 
 			<div class="span-8 menu green last">
 				<ul style="float:right">
+					<li <%= mark_if_current('developers') %>><%= link_to 'Developers', :controller => 'pages', :action => 'developers'%></li>
+					<li <%= mark_if_current('faqs') %>><%= link_to 'FAQs', :controller => 'pages', :action => 'faqs'%></li>
+					<li <%= mark_if_current('about') %>><%= link_to 'About', :controller => 'pages', :action => 'about'%></li>
+
 <% if false %>
 					<li <%= mark_if_current('impact') %>>  <%= link_to 'My Impact', (logged_in? ? impact_path : login_signup_path) %></li>
 					<li <%= mark_if_current('community') %>><%= link_to 'Community', community_path %></li>
-<% end %>
+
 					<% unless logged_in? %>
 					<li class="text-link"><%= link_to '{ signup', signup_path, :class => 'border-right' %></li>
 
@@ -241,6 +246,7 @@
 				    <% else%>
 						<li class="text-link"><%= link_to '{ logout }', logout_path %></li>
 					<% end %>	
+<% end %>
 				</ul>
 			</div>
 

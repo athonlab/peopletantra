@@ -21,12 +21,14 @@ def is_current? tab
 	case tab
 	when 'home'
 		request.path.eql?('/')
-	when 'working'
-		request.path.eql?('/pages/how_it_works')
+	when 'developers'
+		request.path.eql?('/pages/developers')
 	when 'faqs'
 		request.path.eql?('/pages/faqs')
-	when 'impact'
-		request.path.eql?('/impact') or request.path.eql?('/preferences')
+        when 'parliament'
+          request.path =~ /\/parliament/
+	when 'about'
+		request.path.eql?('/pages/about')
 	when 'community'
 		request.path.eql?('/community') or /^\/users\/\d+/.match(request.path)
 	end
@@ -37,7 +39,7 @@ def is_current? tab
   end
 
   def context_box_color
-	['/', '/pages/faqs', '/pages/how_it_works'].include?(request.path) ? 'yellow' : 'green'
+	['/pages/developers', '/pages/faqs', '/pages/about'].include?(request.path) ? 'green' : 'yellow'  
   end
 
 end

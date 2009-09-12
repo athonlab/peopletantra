@@ -82,4 +82,13 @@ class CandidatesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def house
+    @revision = Revision.find_by_number_and_house(params[:number], params[:house])
+    @candidates = @revision.candidates
+    respond_to do |format|
+      format.html { render :template => 'candidates/index' }
+    end
+  end
+
 end

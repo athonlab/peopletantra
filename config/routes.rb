@@ -27,6 +27,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :passwords
   map.resource :session
   
+  # parliament pages
+  map.parliament '/parliament/:number/:house', :controller => 'candidates', :action => 'house'
   # Home Page
   map.root :controller => 'pages', :action => 'home'
 

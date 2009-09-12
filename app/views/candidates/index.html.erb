@@ -1,4 +1,9 @@
+<% if @revision %>
+<h2> <%= @revision.number %>th <%= @revision.house.capitalize %> Members</h2>
+<%= link_to @revision.house.eql?('loksabha') ? 'Rajyasabha Members' : 'Loksabha Members', :action => 'house', :house => (@revision.house.eql?('loksabha') ? 'rajyasabha' : 'loksabha'), :number => 15 %>
+<% else %>
 <h1>Listing candidates</h1>
+<% end %>
 
 <table>
   <tr>
