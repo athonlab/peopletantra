@@ -20,17 +20,20 @@ module ApplicationHelper
 def is_current? tab
 	case tab
 	when 'home'
-		request.path.eql?('/')
+          request.path.eql?('/')
 	when 'developers'
-		request.path.eql?('/pages/developers')
+          request.path.eql?('/pages/developers')
 	when 'faqs'
-		request.path.eql?('/pages/faqs')
+          request.path.eql?('/pages/faqs')
         when 'parliament'
           request.path =~ /\/parliament/
 	when 'about'
-		request.path.eql?('/pages/about')
+          request.path.eql?('/pages/about')          
 	when 'community'
-		request.path.eql?('/community') or /^\/users\/\d+/.match(request.path)
+          request.path.eql?('/community') or /^\/users\/\d+/.match(request.path)
+        when 'election'
+          request.path.eql?('/election/2009')
+          
 	end
   end
 

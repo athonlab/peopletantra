@@ -29,13 +29,11 @@
     <td><%=h candidate.category %></td>
     <td><%=h candidate.constituency_id %></td>
     <td><%=h candidate.party_id %></td>
-    <td><%= link_to 'Show', candidate %></td>
-    <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
-    <td><%= link_to 'Destroy', candidate, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Detail', candidate %></td>
   </tr>
 <% end %>
 </table>
-
+<%= will_paginate @candidates %>
 <br />
 
-<%= link_to 'New candidate', new_candidate_path %>
+

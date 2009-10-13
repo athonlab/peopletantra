@@ -31,7 +31,7 @@ role :db, domain, :primary => true
 set :scm, :git
 set :branch, "master"
 set :repository, "git@github.com:athonlab/peopletantra.git"
-set :deploy_via, :remote_cache
+#set :deploy_via, :remote_cache
 
 #############################################################
 #	Passenger

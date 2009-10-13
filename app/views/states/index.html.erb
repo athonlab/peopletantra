@@ -3,16 +3,14 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Code</th>
+    <th>No of Constituencies</th>
   </tr>
 
 <% for state in @states %>
   <tr>
     <td><%=h state.name %></td>
-    <td><%=h state.code %></td>
+    <td><%=h state.constituencies.count %></td>
     <td><%= link_to 'Show', state %></td>
-    <td><%= link_to 'Edit', edit_state_path(state) %></td>
-    <td><%= link_to 'Destroy', state, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

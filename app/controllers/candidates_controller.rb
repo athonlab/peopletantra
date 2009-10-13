@@ -2,7 +2,7 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.xml
   def index
-    @candidates = Candidate.find(:all)
+    @candidates = Candidate.paginate( :page => params[:page] )
 
     respond_to do |format|
       format.html # index.html.erb
@@ -85,7 +85,7 @@ class CandidatesController < ApplicationController
   
   def house
     @revision = Revision.find_by_number_and_house(params[:number], params[:house])
-    @candidates = @revision.candidates
+    @candidates = @revision.candidates.paginate( :page => params[:page] )
     respond_to do |format|
       format.html { render :template => 'candidates/index' }
     end

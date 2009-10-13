@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery :secret => 'b0a876313f3f9195e9bd01473bc5cd06'
   filter_parameter_logging :password, :password_confirmation
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
-  
+  require_role 'admin', :for => [:new, :create, :edit, :update, :destroy ]
+
   protected
   
   # Automatically respond with 404 for ActiveRecord::RecordNotFound

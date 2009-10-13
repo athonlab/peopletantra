@@ -29,6 +29,9 @@ ActionController::Routing::Routes.draw do |map|
   
   # parliament pages
   map.parliament '/parliament/:number/:house', :controller => 'candidates', :action => 'house'
+
+  # election pages
+  map.election_2009 '/election/2009', :controller => 'candidates', :action => 'index'
   # Home Page
   map.root :controller => 'pages', :action => 'home'
 

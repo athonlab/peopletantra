@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Member Name</th>
     <th>Code</th>
     <th>State</th>
   </tr>
@@ -10,11 +11,10 @@
 <% for constituency in @constituencies %>
   <tr>
     <td><%=h constituency.name %></td>
+    <td><%=h constituency.member %></td>
     <td><%=h constituency.code %></td>
-    <td><%=h constituency.state_id %></td>
+    <td><%=h constituency.state %></td>
     <td><%= link_to 'Show', constituency %></td>
-    <td><%= link_to 'Edit', edit_constituency_path(constituency) %></td>
-    <td><%= link_to 'Destroy', constituency, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
