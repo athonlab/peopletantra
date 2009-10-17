@@ -5,5 +5,8 @@ class Constituency < ActiveRecord::Base
   def member
     
   end
-
+  
+  def to_s
+    name
+  end
 end
